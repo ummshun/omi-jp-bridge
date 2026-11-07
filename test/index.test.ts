@@ -7,7 +7,7 @@ const calls: Array<{ url: string; body: any; headers: Headers }> = [];
 const env = (): Env => ({
   SHARED_KEY: 'test-key', TODOIST_TOKEN: 'todoist-test', TODOIST_PROJECT_ID: 'project',
   NOTION_TOKEN: 'notion-test', NOTION_DATABASE_ID: 'database',
-  SEEN: { get: async (id: string) => seen.get(id) ?? null, put: async (id: string, value: string) => { seen.set(id, value); } } as KVNamespace
+  SEEN: { get: async (id: string) => seen.get(id) ?? null, put: async (id: string, value: string) => { seen.set(id, value); }, delete: async (id: string) => { seen.delete(id); } } as unknown as KVNamespace
 });
 const send = (body: unknown = memory, key = 'test-key', bindings = env()) => worker.fetch(new Request(`https://example.test/omi/memory?uid=user&key=${key}`, { method: 'POST', body: JSON.stringify(body) }), bindings);
 
@@ -87,5 +87,34 @@ describe('Omi memory webhook', () => {
     const total = notionCalls.reduce((n, c) => n + c.body.children.length, 0);
     expect(total).toBe(1 + 1 + 1 + long.structured.action_items.length + 1 + 230);
     expect(notionCalls[0].body.children[0].type).toBe('heading_2');
+  });
+  it('returns 200 for a discarded memory even when other fields are missing', async () => {
+    const response = await send({ id: 'x', discarded: true });
+    expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ status: 'discarded' });
+    expect(calls).toHaveLength(0);
+  });
+
+  it('treats a resend that arrives while the first is still processing as a duplicate', async () => {
+    let release!: () => void;
+    const gate = new Promise<void>(r => { release = r; });
+    vi.stubGlobal('fetch', vi.fn(async (input: string, init: RequestInit) => {
+      calls.push({ url: input, body: JSON.parse(String(init.body)), headers: new Headers(init.headers) });
+      await gate;
+      return new Response('{"id":"page-1"}', { status: 200 });
+    }));
+    const first = send();
+    await new Promise(r => setTimeout(r, 0));
+    const second = await send();
+    expect(await second.json()).toEqual({ status: 'duplicate' });
+    release();
+    expect(((await (await first).json()) as any).status).toBe('ok');
+    expect(calls.filter(c => c.url.includes('todoist'))).toHaveLength(2);
+  });
+
+  it('releases the id after a failure so Omi can retry', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => new Response('{}', { status: 503 })));
+    await send();
+    expect(seen.has(memory.id)).toBe(false);
   });
 });

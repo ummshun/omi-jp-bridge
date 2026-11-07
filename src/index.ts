@@ -51,6 +51,7 @@ async function post(url: string, token: string, body: unknown, headers: Record<s
   try { return (await response.json()) as Record<string, unknown>; } catch { return {}; }
 }
 
+const PENDING_TTL_SECONDS = 600;
 const NOTION_VERSION = { 'Notion-Version': '2022-06-28' };
 const NOTION_MAX_CHILDREN = 100;
 
@@ -84,10 +85,12 @@ export default {
     if (!env.SHARED_KEY || url.searchParams.get('key') !== env.SHARED_KEY) return json({ error: 'unauthorized' }, 401);
     let raw: unknown;
     try { raw = await request.json(); } catch { return json({ error: 'invalid_json' }, 400); }
+    if (raw && typeof raw === 'object' && (raw as { discarded?: unknown }).discarded === true) return json({ status: 'discarded' });
     if (!validMemory(raw)) return json({ error: 'invalid_memory' }, 400);
     const memory = raw;
-    if (memory.discarded) return json({ status: 'discarded' });
     if (await env.SEEN.get(memory.id)) return json({ status: 'duplicate' });
+    // Claim the id before side effects so a quick resend is treated as a duplicate.
+    await env.SEEN.put(memory.id, 'pending', { expirationTtl: PENDING_TTL_SECONDS });
 
     const errors: string[] = [];
     let todoist = 0;
@@ -121,6 +124,7 @@ export default {
       } catch (error) { errors.push(`notion: ${error instanceof Error ? error.message : 'unknown error'}`); }
     }
     if (errors.length === 0) await env.SEEN.put(memory.id, '1');
+    else await env.SEEN.delete(memory.id);
     console.log(JSON.stringify({ id: memory.id, todoist, notion, error_count: errors.length }));
     return json({ status: 'ok', todoist, notion, errors });
   }

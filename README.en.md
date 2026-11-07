@@ -35,6 +35,6 @@ In Omi, go to **Explore → Create an App → Integration** and set the **Memory
 
 ## Privacy and retries
 
-The Worker does not store transcripts. KV stores only processed memory IDs; logs contain only the ID and counts. API failures appear in the HTTP 200 response's `errors` array. Failed deliveries remain retryable, though a retry after partial success may create duplicate items. The shared key is in the URL, so take care when sharing URLs or retaining access logs.
+The Worker does not store transcripts. KV stores only processed memory IDs (the ID is claimed before processing, so a resend that arrives mid-processing is also treated as a duplicate); logs contain only the ID and counts. API failures appear in the HTTP 200 response's `errors` array. Failed deliveries remain retryable, though a retry after partial success may create duplicate items. The shared key is in the URL, so take care when sharing URLs or retaining access logs.
 
 MIT License. Japanese documentation: [README.md](README.md).
