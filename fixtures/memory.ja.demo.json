@@ -1,0 +1,357 @@
+{
+  "id": "memory-ja-demo-002",
+  "created_at": "2026-11-07T01:00:00Z",
+  "started_at": "2026-11-07T00:30:00Z",
+  "finished_at": "2026-11-07T01:00:00Z",
+  "transcript_segments": [
+    {
+      "text": "じゃあ始めましょう。今日は登録画面と、来週のインタビュー、それから通知文の三つを話したいです。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 0.0,
+      "end": 8.7
+    },
+    {
+      "text": "はい。まず先週の利用者アンケートから共有しますね。回答は四十二件でした。",
+      "speaker_name": "田中",
+      "speaker": "田中",
+      "speakerId": "田中",
+      "is_user": false,
+      "start": 9.5,
+      "end": 16.5
+    },
+    {
+      "text": "登録までの説明が、ちょっと長いって声が多いです。最初の画面で読むのをやめた人もいました。",
+      "speaker_name": "田中",
+      "speaker": "田中",
+      "speakerId": "田中",
+      "is_user": false,
+      "start": 17.3,
+      "end": 25.5
+    },
+    {
+      "text": "どのあたりで止まっているか分かりますか。",
+      "speaker_name": "佐藤",
+      "speaker": "佐藤",
+      "speakerId": "佐藤",
+      "is_user": false,
+      "start": 26.3,
+      "end": 30.7
+    },
+    {
+      "text": "二段落目の、データの扱いを説明しているところです。大事なんですけど、最初に全部は読まれないですね。",
+      "speaker_name": "田中",
+      "speaker": "田中",
+      "speakerId": "田中",
+      "is_user": false,
+      "start": 31.5,
+      "end": 40.5
+    },
+    {
+      "text": "じゃあ、説明文を短くしよう。最初は三行くらいにして、詳しい説明は「詳しく見る」で開くようにしたいです。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 41.3,
+      "end": 50.7
+    },
+    {
+      "text": "賛成です。三行なら、スマホでもスクロールせずに読めますね。",
+      "speaker_name": "佐藤",
+      "speaker": "佐藤",
+      "speakerId": "佐藤",
+      "is_user": false,
+      "start": 51.5,
+      "end": 57.3
+    },
+    {
+      "text": "ボタンの文言も「はじめる」に揃えたいです。今は「登録」と「スタート」が混ざっています。",
+      "speaker_name": "田中",
+      "speaker": "田中",
+      "speakerId": "田中",
+      "is_user": false,
+      "start": 58.1,
+      "end": 66.2
+    },
+    {
+      "text": "いいですね。それも説明文と一緒に直しましょう。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 67.0,
+      "end": 71.9
+    },
+    {
+      "text": "次はインタビューです。候補者は今のところ五人います。",
+      "speaker_name": "佐藤",
+      "speaker": "佐藤",
+      "speakerId": "佐藤",
+      "is_user": false,
+      "start": 72.7,
+      "end": 78.1
+    },
+    {
+      "text": "インタビューの日程は、私が整理します。候補日を三つずつ出してもらって、明日までに表にします。",
+      "speaker_name": "佐藤",
+      "speaker": "佐藤",
+      "speakerId": "佐藤",
+      "is_user": false,
+      "start": 78.9,
+      "end": 87.5
+    },
+    {
+      "text": "ありがとう。一人三十分で、間に十五分空けてもらえると助かります。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 88.3,
+      "end": 94.6
+    },
+    {
+      "text": "録音の同意は、事前のメールで取っておきますね。",
+      "speaker_name": "田中",
+      "speaker": "田中",
+      "speakerId": "田中",
+      "is_user": false,
+      "start": 95.4,
+      "end": 100.3
+    },
+    {
+      "text": "オンラインと対面、どちらも選べるようにしておきます。",
+      "speaker_name": "佐藤",
+      "speaker": "佐藤",
+      "speakerId": "佐藤",
+      "is_user": false,
+      "start": 101.1,
+      "end": 106.5
+    },
+    {
+      "text": "うん、それでお願いします。聞きたいことのリストは、私が金曜までに作ります。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 107.3,
+      "end": 114.4
+    },
+    {
+      "text": "三つ目の通知文ですが、日本語の表記ゆれが結構あります。",
+      "speaker_name": "田中",
+      "speaker": "田中",
+      "speakerId": "田中",
+      "is_user": false,
+      "start": 115.2,
+      "end": 120.7
+    },
+    {
+      "text": "「ログイン」と「サインイン」、「確認する」と「チェックする」が画面によって違うんです。",
+      "speaker_name": "田中",
+      "speaker": "田中",
+      "speakerId": "田中",
+      "is_user": false,
+      "start": 121.5,
+      "end": 129.6
+    },
+    {
+      "text": "用語集を一枚作って、それに合わせるのがいいと思います。",
+      "speaker_name": "佐藤",
+      "speaker": "佐藤",
+      "speakerId": "佐藤",
+      "is_user": false,
+      "start": 130.4,
+      "end": 135.9
+    },
+    {
+      "text": "そうしよう。通知は短く、次に何をすればいいかが分かる書き方に揃えたいですね。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 136.7,
+      "end": 144.0
+    },
+    {
+      "text": "たとえば「保存しました」だけじゃなくて、「保存しました。一覧に戻れます」みたいな形ですね。",
+      "speaker_name": "田中",
+      "speaker": "田中",
+      "speakerId": "田中",
+      "is_user": false,
+      "start": 144.8,
+      "end": 153.2
+    },
+    {
+      "text": "英語版も同じ用語集で管理できると、翻訳もぶれなくなります。",
+      "speaker_name": "佐藤",
+      "speaker": "佐藤",
+      "speakerId": "佐藤",
+      "is_user": false,
+      "start": 154.0,
+      "end": 159.8
+    },
+    {
+      "text": "いいね。用語集の叩き台は、田中さんにお願いしてもいいですか。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 160.6,
+      "end": 166.6
+    },
+    {
+      "text": "はい、来週の定例までに出します。",
+      "speaker_name": "田中",
+      "speaker": "田中",
+      "speakerId": "田中",
+      "is_user": false,
+      "start": 167.4,
+      "end": 171.2
+    },
+    {
+      "text": "それと、前回決めた議事録の整理なんですけど。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 172.0,
+      "end": 176.7
+    },
+    {
+      "text": "共有フォルダに入れておきました。",
+      "speaker_name": "佐藤",
+      "speaker": "佐藤",
+      "speakerId": "佐藤",
+      "is_user": false,
+      "start": 177.5,
+      "end": 184.0
+    },
+    {
+      "text": "前回の議事録は、もう整理済みだね。ありがとう。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 184.8,
+      "end": 189.7
+    },
+    {
+      "text": "公開前のチェックリストも、そこに入れておきました。",
+      "speaker_name": "田中",
+      "speaker": "田中",
+      "speakerId": "田中",
+      "is_user": false,
+      "start": 190.5,
+      "end": 195.7
+    },
+    {
+      "text": "公開はいつごろを考えていますか。",
+      "speaker_name": "佐藤",
+      "speaker": "佐藤",
+      "speakerId": "佐藤",
+      "is_user": false,
+      "start": 196.5,
+      "end": 200.3
+    },
+    {
+      "text": "インタビューの結果を見てから決めたいので、早くても再来週ですね。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 201.1,
+      "end": 207.4
+    },
+    {
+      "text": "じゃあ説明文の修正は、インタビューの前に入れておきたいですね。",
+      "speaker_name": "田中",
+      "speaker": "田中",
+      "speakerId": "田中",
+      "is_user": false,
+      "start": 208.2,
+      "end": 214.4
+    },
+    {
+      "text": "そうですね。修正版で反応を見られるのが一番いいです。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 215.2,
+      "end": 220.6
+    },
+    {
+      "text": "候補者に送る案内にも、新しい説明文を使います。",
+      "speaker_name": "佐藤",
+      "speaker": "佐藤",
+      "speakerId": "佐藤",
+      "is_user": false,
+      "start": 221.4,
+      "end": 226.3
+    },
+    {
+      "text": "では今日の決定をまとめます。説明文を三行にする、ボタンは「はじめる」に揃える。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 227.1,
+      "end": 234.5
+    },
+    {
+      "text": "インタビューの日程は佐藤さん、用語集は田中さん、質問リストは私です。",
+      "speaker_name": "舜",
+      "speaker": "舜",
+      "speakerId": "舜",
+      "is_user": true,
+      "start": 235.3,
+      "end": 241.9
+    },
+    {
+      "text": "了解です。",
+      "speaker_name": "田中",
+      "speaker": "田中",
+      "speakerId": "田中",
+      "is_user": false,
+      "start": 242.7,
+      "end": 244.7
+    },
+    {
+      "text": "大丈夫です。お疲れさまでした。",
+      "speaker_name": "佐藤",
+      "speaker": "佐藤",
+      "speakerId": "佐藤",
+      "is_user": false,
+      "start": 245.5,
+      "end": 249.1
+    }
+  ],
+  "structured": {
+    "title": "週次プロダクト定例",
+    "overview": "利用者アンケートを踏まえ、登録画面の説明文を三行に短くし、ボタンの文言を揃える。来週の利用者インタビューの日程を整理し、通知文の表記ゆれは用語集で統一する。",
+    "emoji": "📝",
+    "category": "work",
+    "action_items": [
+      {
+        "description": "登録画面の説明文を短くする",
+        "completed": false
+      },
+      {
+        "description": "インタビュー候補者の日程を整理する",
+        "completed": false
+      },
+      {
+        "description": "前回の議事録を整理する",
+        "completed": true
+      }
+    ],
+    "events": []
+  },
+  "apps_response": [],
+  "discarded": false,
+  "folder_id": null,
+  "folder_name": null
+}
