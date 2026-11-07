@@ -45,19 +45,30 @@ function jst(date: string): string {
   return `${get('year')}-${get('month')}-${get('day')} ${get('hour')}:${get('minute')}`;
 }
 
-async function post(url: string, token: string, body: unknown, headers: Record<string, string> = {}): Promise<void> {
-  const response = await fetch(url, { method: 'POST', headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', ...headers }, body: JSON.stringify(body) });
+async function post(url: string, token: string, body: unknown, headers: Record<string, string> = {}, method = 'POST'): Promise<Record<string, unknown>> {
+  const response = await fetch(url, { method, headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json', ...headers }, body: JSON.stringify(body) });
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  try { return (await response.json()) as Record<string, unknown>; } catch { return {}; }
+}
+
+const NOTION_VERSION = { 'Notion-Version': '2022-06-28' };
+const NOTION_MAX_CHILDREN = 100;
+
+function heading(text: string): unknown {
+  return { object: 'block', type: 'heading_2', heading_2: { rich_text: [richText(text)] } };
 }
 
 function notionBlocks(memory: Memory): unknown[] {
   const blocks: unknown[] = [];
+  if (memory.structured.overview) blocks.push(heading('概要'));
   for (const chunk of splitText(memory.structured.overview ?? '')) blocks.push(paragraph(chunk));
+  if (memory.structured.action_items.length > 0) blocks.push(heading('やること'));
   for (const item of memory.structured.action_items) {
     for (const [index, chunk] of splitText(item.description).entries()) {
       blocks.push({ object: 'block', type: 'to_do', to_do: { rich_text: [richText(chunk)], checked: index === 0 && item.completed } });
     }
   }
+  if (memory.transcript_segments.length > 0) blocks.push(heading('文字起こし'));
   for (const segment of memory.transcript_segments) {
     const line = `${segment.speaker_name || segment.speaker || '不明'}: ${segment.text}`;
     for (const chunk of splitText(line)) blocks.push(paragraph(chunk));
@@ -85,7 +96,7 @@ export default {
       for (const [index, item] of memory.structured.action_items.entries()) {
         if (item.completed) continue;
         try {
-          await post('https://api.todoist.com/rest/v2/tasks', env.TODOIST_TOKEN, {
+          await post('https://api.todoist.com/api/v1/tasks', env.TODOIST_TOKEN, {
             content: item.description,
             description: `Omi: ${memory.structured.title}（${jst(memory.started_at)}）`,
             ...(env.TODOIST_PROJECT_ID ? { project_id: env.TODOIST_PROJECT_ID } : {})
@@ -96,11 +107,16 @@ export default {
     }
     if (env.NOTION_TOKEN && env.NOTION_DATABASE_ID) {
       try {
-        await post('https://api.notion.com/v1/pages', env.NOTION_TOKEN, {
+        const blocks = notionBlocks(memory);
+        const page = await post('https://api.notion.com/v1/pages', env.NOTION_TOKEN, {
           parent: { database_id: env.NOTION_DATABASE_ID },
           properties: { Name: { title: [richText(`${memory.structured.emoji ?? ''}${memory.structured.title}`)] } },
-          children: notionBlocks(memory)
-        }, { 'Notion-Version': '2022-06-28' });
+          children: blocks.slice(0, NOTION_MAX_CHILDREN)
+        }, NOTION_VERSION);
+        for (let i = NOTION_MAX_CHILDREN; i < blocks.length; i += NOTION_MAX_CHILDREN) {
+          await post(`https://api.notion.com/v1/blocks/${String(page.id)}/children`, env.NOTION_TOKEN,
+            { children: blocks.slice(i, i + NOTION_MAX_CHILDREN) }, NOTION_VERSION, 'PATCH');
+        }
         notion = true;
       } catch (error) { errors.push(`notion: ${error instanceof Error ? error.message : 'unknown error'}`); }
     }
