@@ -1,0 +1,7 @@
+name = "omi-jp-bridge"
+main = "src/index.ts"
+compatibility_date = "2025-11-01"
+
+[[kv_namespaces]]
+binding = "SEEN"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"

@@ -1,0 +1,8 @@
+{
+  "name": "omi-jp-bridge",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {"test": "vitest run", "typecheck": "tsc --noEmit"},
+  "devDependencies": {"@cloudflare/workers-types": "^5.20261104.1", "typescript": "^5.9.3", "vitest": "^3.2.4", "wrangler": "^4.45.0"}
+}
