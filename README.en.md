@@ -2,6 +2,8 @@
 
 A Cloudflare Worker that sends unfinished action items from Omi memories to Todoist and Japanese summaries, checklists, and transcripts to Notion. It does not call an AI model on the server.
 
+**Demo video**: https://omi-jp-bridge.pages.dev/ (running against real Todoist and Notion accounts)
+
 ```text
 Omi Memory creation webhook
              │

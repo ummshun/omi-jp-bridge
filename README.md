@@ -2,6 +2,8 @@
 
 Omi の会話メモリから、未完了のやることを Todoist に、日本語の概要・やること・文字起こしを Notion に送る Cloudflare Worker です。サーバー側で AI は使いません。
 
+**デモ動画**: https://omi-jp-bridge.pages.dev/ （実際の Todoist・Notion で動かした様子）
+
 ```text
 Omi Memory creation webhook
              │
